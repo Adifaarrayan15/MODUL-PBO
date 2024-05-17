@@ -1,0 +1,37 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class DaftarMahasiswa {  
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> daftarNama = new ArrayList<>();
+        String input = "";
+        int i = 1;
+
+        while (true) {
+            System.out.print("Masukkan nama ke-" + i + ": ");
+            input = scanner.nextLine();
+
+            if (input.equals("selesai")) {
+                break;
+            }
+
+            try {
+                if (input.isEmpty()) {
+                    throw new IllegalArgumentException("Nama tidak boleh kosong!");
+                }
+                daftarNama.add(input);
+                i++;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        System.out.println("Daftar mahasiswa yang diinputkan:");
+        for (String nama : daftarNama) {
+            System.out.println("- " + nama);
+        }
+
+        scanner.close();
+    }
+}
